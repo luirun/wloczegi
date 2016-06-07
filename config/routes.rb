@@ -4,6 +4,10 @@ get 'admins/panel' => 'admins#panel'
 get 'admins/new' => 'admins#new'
 post 'admins/create' => 'admins#create'
 get 'admins/useredit' => 'admins#useredit'
+get 'calendars/index' => 'calendars#index'
+post 'calendars/create' => 'calendars#create'
+get 'calendars/new' => 'calendars#new'
+get 'calendars/describe' => 'calendars#describe'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

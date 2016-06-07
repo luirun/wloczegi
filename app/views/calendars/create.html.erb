@@ -1,0 +1,19 @@
+					<% if $i == @today && $i == f.dzien %>
+						<td style="background-color:green"><%= $i %>Dzien<%= f.dzien %>TEST<%= $a %></td>
+						
+								<% if $a%7 == 0 %>
+									<tr>
+								<% end %>
+												
+						<% $i+=1 %>
+						<% $a+=1 %>
+					<% end %>
+					
+					<% if $a%7 == 0 %>
+						<tr></td>
+					<% end %>
+					<%= $i %>
+					
+					<td><%= $i %>Dzien<%= f.dzien %>TEST<%= a %></td>
+					<% $i+=1 %>
+					<% $a+=1 %>
