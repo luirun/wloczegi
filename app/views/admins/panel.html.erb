@@ -60,3 +60,25 @@ Zarzadzaj miejscami.
 <% end %>
 </table>
 <% end %>
+
+
+Zarzadzaj zastępami.
+<table>
+			<td>Id</td>
+			<td>Nazwa</td>
+			<td>Zastepowy</td>
+			<td>Opis</td>
+<% @units.each do |p| %>
+<td><%= form_for (p), url: {:action => 'panel'}, method: :post do |f| %></td>
+	<tr>
+		<td><%= p.id %></td>
+		<td><%= p.Nazwa %></td>
+		<td><%= p.Zastepowy %> </td>
+		<td><%= p.opis %> </td>
+		<td><%= f.hidden_field "id", :value => p.id, label: "aa" %>
+			<%= f.button "Edytuj" %>
+			<% end %></td>
+	</tr>
+<% end %>
+<%= link_to "Dodaj nowy zastęp", {controller: "units", action: "create"} %>
+</table>

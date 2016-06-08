@@ -8,6 +8,9 @@ get 'calendars/index' => 'calendars#index'
 post 'calendars/create' => 'calendars#create'
 get 'calendars/new' => 'calendars#new'
 get 'calendars/describe' => 'calendars#describe'
+get 'units/index' => 'units#index'
+get 'units/create' => 'units#create'
+post 'units/new' => 'units#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -2,6 +2,7 @@ class AdminsController < ApplicationController
 
   def panel
    @all = Admin.all
+   @units = Unit.all
   end
  
   def new

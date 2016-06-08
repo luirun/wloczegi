@@ -1,0 +1,14 @@
+<table>
+			<td>Id</td>
+			<td>Nazwa</td>
+			<td>Zastepowy</td>
+			<td>Opis</td>
+	<% @units.each do |f| %>
+		<tr>
+			<td><%= f.id %></td>
+			<td><%= f.Nazwa %></td>
+			<td><%= f.Zastepowy %></td>
+			<td><%= f.opis %></td>
+		</tr>
+	<% end %>
+</table>
