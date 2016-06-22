@@ -1,0 +1,22 @@
+<%= form_for @contacts, url: {controller: "contacts", action: "create"}, method: "post" do |f| %>
+
+	<%= f.hidden_field :date, value: Time.now() %>
+
+	<%= f.label :imie %>
+	<%= f.text_field :imie %>
+	
+	<%= f.label :nazwisko %>
+	<%= f.text_field :nazwisko %>
+	
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	
+	<%= f.label :tytul %>
+	<%= f.text_field :tytul %>
+
+	<%= f.label :opis %>
+	<%= f.text_area :opis %>
+	
+	<%= f.submit "Wyślij", class: "button" %>
+
+<% end %>

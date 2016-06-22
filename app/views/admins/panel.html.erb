@@ -1,3 +1,7 @@
+<% if @uzytkownik == nil %>
+Zaloguj się!
+<% else %>
+<% if @uzytkownik.isadmin == "yes" %>
 <table>
 	<td>ID</td>
 	<td>Imie</td>
@@ -82,3 +86,7 @@ Zarzadzaj zastępami.
 <% end %>
 <%= link_to "Dodaj nowy zastęp", {controller: "units", action: "create"} %>
 </table>
+<% else %>
+Musisz zalogowac sie na konto administratora
+<% end %>
+<% end %>

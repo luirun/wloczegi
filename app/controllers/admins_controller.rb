@@ -1,16 +1,18 @@
 class AdminsController < ApplicationController
 
   def panel
-   @all = Admin.all
+   @all = Scout.all
    @units = Unit.all
+   @uzytkownik = current_user
   end
  
   def new
-		@user = Admin.new
+		@user = Scout.new
+		@zastep = Unit.select(:id, :nazwa)
  end
  
 	def create
-	@user = Admin.new(secure_params)
+	@user = Scout.new(secure_params)
 		if @user.valid?
 		@user.save
 		flash[:notice] = "Cos tutaj dziala!"
@@ -26,5 +28,5 @@ end
 private
 
 	def secure_params
-		params.require(:admin).permit(:id, :imie, :nazwisko, :pesel, :zastep, :wiek)
+		params.require(:scout).permit(:id, :imie, :nazwisko, :pesel, :zastep, :wiek)
 	end

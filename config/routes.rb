@@ -8,9 +8,35 @@ get 'calendars/index' => 'calendars#index'
 post 'calendars/create' => 'calendars#create'
 get 'calendars/new' => 'calendars#new'
 get 'calendars/describe' => 'calendars#describe'
-get 'units/index' => 'units#index'
+get 'zastepy' => 'units#index'
 get 'units/create' => 'units#create'
 post 'units/new' => 'units#new'
+get 'sessions/new' => 'sessions#new'
+post 'sessions/create' => 'sessions#create'
+get 'sessions/logout' => 'sessions#destroy'
+post 'users/create' => 'users#create'
+get 'users/profile' => 'users#profile'
+get 'users/new' => 'users#new'
+get 'posts/new' => 'posts#new'
+post 'posts/create' => 'posts#create'
+get '/post' => 'posts#show'
+get 'posts/last2' => 'posts#last2'
+get 'galeria' => 'photos#show'
+get 'galeria/dodaj' => 'photos#new'
+get 'galeria/nowa' => 'photos#newgallery'
+post 'galeria/dodano' => 'photos#create'
+post 'galeria/dodanogalerie' => 'photos#creategallery'
+get 'zdjecia/' => 'photos#showgallery'
+get 'zdjecie/nowe' => 'photos#newingallery'
+get 'zdjecie/nowe/dodaj' => 'photos#createingallery'
+get 'kontakt' => 'contacts#index'
+post 'kontakt/wyslij' => 'contacts#create'
+
+
+resources :visitors do
+  resources :posts
+end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

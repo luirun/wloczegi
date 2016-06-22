@@ -1,12 +1,14 @@
 class UnitsController < ApplicationController
 
 	def index
-		@units = Unit.all
+		@units = Unit.where(:Nazwa => params[:nazwa]).first
+		@zastepowy = Scout.find(@units.Zastepowy)
+		@sklad = Scout.where(:zastep => @units.id)
 	end
 	
 	def create
 		@newunit = Unit.new
-		@harcerze = Admin.all
+		@harcerze = Scout.all
 	end
 	
 	def new

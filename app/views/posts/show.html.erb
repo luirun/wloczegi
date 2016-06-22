@@ -1,0 +1,9 @@
+<% kategoria = Category.find(@post.kategoria) %>
+<% user = User.find(@post.id_autora) %>
+
+
+
+<h2><%= @post.tytul %></h2>
+<h3><%= user.imie %> <%= user.nazwisko %> <%= @post.data_dodania %></h3>
+Kategoria:<%= link_to kategoria.nazwa, category: kategoria.nazwa %></br>
+<%= @post.opis %>

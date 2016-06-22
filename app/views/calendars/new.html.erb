@@ -5,8 +5,8 @@
 		<%= label_tag(:event_date, "Data:") %>
 		<%= f.date_select :event_date, {order: [:year,:month, :day], prompt: { day: 'Select day' }, start_year: Date.today.year+5, end_year: Date.today.year-5}, {required: true} %>
 		
-		<%= label_tag(:godzna, "Godzina:") %>
-		<%= f.text_field :godzina %>
+		<%= label_tag(:godzina, "Godzina: (w formacie GG:MM)") %>
+		<%= f.text_field :godzina, class: "select" %>
 		
 		<%= label_tag(:tytul, "Tyul:") %>
 		<%= f.text_field :tytul %>

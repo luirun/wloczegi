@@ -45,15 +45,15 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# miejscowka
-gem 'rake', '~> 11.1.2'
+# wloczegi
+gem 'rake', '~> 10.2.0'
 gem 'compass-rails', '~> 3.0', '>= 3.0.2'
 gem 'figaro'
 gem 'high_voltage', '~> 2.4'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'zurb-foundation', '~> 4.3', '>= 4.3.2'
 gem 'localtunnel', '~> 1.0', '>= 1.0.3'
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem "paperclip", "~> 5.0.0.beta1"
 gem 'bcrypt'
 
 group :development do

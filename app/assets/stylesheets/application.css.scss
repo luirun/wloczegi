@@ -15,43 +15,52 @@
  //= require foundation_and_overrides
  */
 /* Variables */
+
+body {
+  font-size: 100%;
+  width:100%;
+}
+
+
+.full-width {
+
+  max-width: 1400px;
+
+}
+
+
+
+$text-color: #fff;
+
+
+
+// footer CSS
+
+
+
 .footer {
 
   background-color: #292c2f;
 
+  padding: 2rem 4rem;
+
   text-align: center;
 
-  font-size: 1.2rem;
+  color: $text-color;
 
-  padding: 4rem;
+  i {
 
-  
-
-  .inline-list a {
-
-    display: inline-block;
-
-    width: 2rem;
-
-    height: 2rem;
-
-    background-color: #33383b;
-
-    border-radius: 2px;
-
-    font-size: 1.5rem;
-
-    color: #fff;
-
-    text-align: center;
-
-    line-height: 35px;
-
-    margin: 0 3px 0 0;
+    font-size: 100px;
 
   }
+
 }
 
+
+a.homeurl {
+color: red;
+padding-top:200px;
+}
 // Adjust width accordingly (use even #'s)
 
 $logo-width: 118px;
@@ -128,3 +137,11 @@ $logo-margin: - ($logo-width / 2);
 
   }
  }
+ 
+.top-bar-section ul li > a.home-url {
+width: 120%;
+  background: #111;
+  font-size: 0.8125em;
+  padding-top: 3px;
+  padding-left: 15px;
+}

@@ -1,0 +1,6 @@
+<% @post.reverse.each do |f| %>
+<h3><%= link_to f.tytul, {controller: "posts", action: "show",s: f.tytul} %></h3>
+<% user = User.find(f.id_autora) %>
+<h5><%= user.imie %>  <%= user.nazwisko %>- <%= f.data_dodania %></h5>
+<%= f.opis %>
+<% end %>

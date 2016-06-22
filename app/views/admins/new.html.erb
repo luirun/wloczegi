@@ -15,7 +15,7 @@
 		<%= f.text_field :wiek %>
 		
 		<%= label_tag(:zastep, "Zastęp:") %>
-		<%= f.text_field :zastep %>
+		<%= f.collection_select(:zastep, @zastep, :id, :nazwa) %>
 		
 		<%= f.submit "Dodaj harcerza!" %>
 <% end %>

@@ -1,18 +1,47 @@
 class CalendarsController < ApplicationController
 
 	def index
-		new = Time.new
-		@daysofmonth = Time.days_in_month(month=new.month, year=new.year)
-		@today = new.day
-		@spaces = (Date.today.at_beginning_of_month.wday )-1
-		@events = Calendar.where('extract(month from event_date) = ?', new.month)
-		@event = Calendar.find(1)
-		@harcerz = Admin.select(:imie,:nazwisko).find(@event.idharcerza)
+		@nazwymiesiecy = ["","Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Pazdziernik","Listopad","Grudzień"]
+		@nrdlanazwy = params[:miesiac].to_i
+		
+		@nrmiesiacainc = (params[:miesiac].to_i)+1
+		@rok = params[:rok].to_i
+			if (@nrdlanazwy == 12 && @nrmiesiacainc == 13)
+				@rokinc = @rok + 1
+				@nrmiesiacainc = 1
+			else
+				@rokinc = params[:rok]
+			end
+		
+			
+		@nrmiesiacadec = (params[:miesiac].to_i)-1
+			if (@nrdlanazwy == 1 && @nrmiesiacadec == 0)
+				@rokdec = @rok - 1
+				@nrmiesiacadec = 12
+			else
+				@rokdec = params[:rok]
+			end
+
+		monthnow = Time.now.month
+			if (monthnow > @nrmiesiacadec)
+				@rozmiesiecy = (@nrmiesiacadec+1) - Time.now.month()
+			else
+				@rozmiesiecy = (@nrmiesiacainc-1) - Time.now.month()
+			end
+		@daysofmonth = Time.days_in_month(month=params[:miesiac].to_i, year=params[:rok].to_i)
+		
+		@spaces = ((Date.today + @rozmiesiecy.months).at_beginning_of_month.wday ) - 1
+			if @spaces == -1
+				@spaces = 6
+			end
+			
+		@events = Calendar.where('extract(month from event_date) = ?', params[:miesiac]).where('extract(year from event_date) = ?', params[:rok])
+		
 	end
 	
 	def new
 		@events = Calendar.new
-		@harcerze = Admin.select(:id, :imie, :nazwisko).group(:nazwisko)
+		@harcerze = Scout.select(:id, :imie, :nazwisko).group(:nazwisko)
 	end
 	
 	def create
@@ -20,7 +49,7 @@ class CalendarsController < ApplicationController
 		if @events.valid?
 			@events.save
 			flash[:notice] = "Wszystko sie dodalo!"
-			redirect_to calendars_index_path
+			redirect_to calendars_new_path
 		else
 			flash[:notice] = "Cos nie dzierga!"
 			redirect_to calendars_new_path
@@ -29,7 +58,7 @@ class CalendarsController < ApplicationController
 	
 	def describe
 		@event = Calendar.find(params[:id])
-		@harcerz = Admin.select(:imie,:nazwisko).find(@event.idharcerza)
+		@harcerz = Scout.select(:imie,:nazwisko).find(@event.idharcerza)
 	end
 	
 end

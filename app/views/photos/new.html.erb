@@ -1,0 +1,12 @@
+<%= form_for @photos, url: {controller: "photos", action: "create"}, html: { multipart: true }, method: "post" do |f| %>
+<%= f.hidden_field :id %>
+
+<%= f.label :id_galerii %>
+<%= f.collection_select(:id_galerii, @gallery, :id, :nazwa) %>
+
+<%= f.file_field :zdjecie %>
+
+<%= f.submit "Dodaj zdjęcie!" %>
+<% end %>
+
+

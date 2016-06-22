@@ -21,7 +21,7 @@
             <div class="logo">
 
 				<ul class="title-arena">
-					<li class="title">ZHP SULECINEK</li>
+					<li class="title"><%= link_to "ZHP SULĘCINEK", root_path, class: "home-url" %></li>
 				</ul>
 
             </div>
@@ -34,9 +34,9 @@
 		  
 		  	<ul class="left">
 
-            <li><a href="#">Wydarzenia</a></li>
+            <li><%= link_to "Galeria", {controller: "photos", action: "show"} %></li>
 
-            <li><%= link_to "Kalendarz", calendars_index_path %></li>
+            <li><%= link_to "Kalendarz", calendars_index_path(rok: Time.now.year(), miesiac: Time.now.month()) %></li>
 
             <li><a href="#">Dołącz do nas!</a></li>
 
@@ -51,11 +51,11 @@
 			<li class="has-dropdown">
               <a href="#">Zastępy</a>
               <ul class="dropdown">
-                <li><%= link_to "Są gorsi!", {controller: "units", action: "index"} %></a></li>
+                <li><%= link_to "Są gorsi!", {controller: "units", action: "index", nazwa: "Są Gorsi!"} %></a></li>
 				<li><a href="#">Nie wiem jakie tam jeszcze masz</a></li>
               </ul>
 
-            <li><a href="#">Kontakt</a></li>
+            <li><%= link_to "Kontakt", {controller: "contacts", action: "index"} %></li>
 			
 						  					<li>	  
 <%= render 'layouts/navigation_links' %>

@@ -1,0 +1,8 @@
+<div class="avatar" style="background-color:gray;width:150px;height:150px;margin:auto; float:left;">Miejsce na avatar</div>
+<h2><%= @user.imie %> <%= @user.nazwisko %></h2>
+<h3><%= @user.login %></h3></br>
+<h4>O mnie:<textarea>Tutaj bedzie miejsce na opis</textarea></h4>
+<% if @user.id_zastepu != nil %>
+<h4>Mój zastęp:<%= @user.id_zastepu %></h4>
+<% end %>
+<%= link_to "Napisz nowy post!", {controller: "posts", action: "new"} %>

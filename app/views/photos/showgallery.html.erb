@@ -1,0 +1,5 @@
+<h2><%= params[:galeria] %></h2>
+<% @photos.each do |f| %>
+<%= image_tag f.zdjecie.url(:medium), style: "float: left;" %>
+<% end %>
+<%= link_to "Dodaj nowe zdjęcie!", {controller: "photos", action: "newingallery", galeria: params[:galeria]} %>
