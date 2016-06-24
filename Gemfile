@@ -53,7 +53,7 @@ gem 'high_voltage', '~> 2.4'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'zurb-foundation', '~> 4.3', '>= 4.3.2'
 gem 'localtunnel', '~> 1.0', '>= 1.0.3'
-gem 'paperclip', '~> 4.3', '>= 4.3.4'
+gem 'paperclip', '~> 3.4'
 gem 'bcrypt'
 
 group :development do
