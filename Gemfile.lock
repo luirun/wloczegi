@@ -108,13 +108,17 @@ GEM
     multi_json (1.12.1)
     mysql2 (0.4.4-x86-mingw32)
     nokogiri (1.6.7.2-x86-mingw32)
-      mini_portile2 (~> 2.0.0.rc2)
-	gem 'paperclip', '~> 3.4'
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+      mini_portile2 (~> 2.0.0.rc2)
+    paperclip (3.5.4)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -210,7 +214,7 @@ DEPENDENCIES
   jquery-rails
   localtunnel (~> 1.0, >= 1.0.3)
   mysql2
-  paperclip (~> 5.0.0.beta1)
+  paperclip (~> 3.4)
   quiet_assets (~> 1.1)
   rails (= 4.2.6)
   rails_layout (~> 1.0, >= 1.0.29)
