@@ -11,3 +11,12 @@
 /log/*
 !/log/.keep
 /tmp
+/public/assets
+
+#ignoruj obrazki
+/.img
+/.png
+/.gif
+*.img
+*.png
+*.gif

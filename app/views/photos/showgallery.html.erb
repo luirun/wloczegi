@@ -1,5 +1,19 @@
 <h2><%= params[:galeria] %></h2>
-<% @photos.each do |f| %>
-<%= image_tag f.zdjecie.url(:medium), style: "float: left;" %>
+<div id="photo" style="width: 100%; height: 100%;">
+<%= image_tag @photos[params[:id].to_i].zdjecie.url, style: "float: left; width: 99%; height: 95%;" %>
+
+<%= link_to galeria: params[:galeria], id: @back, :controller => :photos, :action => :showgallery do %>
+	<%= image_tag "/system/buttons/back.png", style: "float:left; position: absolute; width: 5%; height: 7%; left: 1%; top: 50%;" %>
 <% end %>
+
+<%= link_to galeria: params[:galeria], id: @next, :controller => :photos, :action => :showgallery do %>
+	<%= image_tag "/system/buttons/next.png", style: "float:right; position: absolute; width: 5%; height: 7%; right: 1%; top: 50%;" %>
+<% end %>
+
+
 <%= link_to "Dodaj nowe zdjęcie!", {controller: "photos", action: "newingallery", galeria: params[:galeria]} %>
+</div>
+
+
+
+<%= @dlugosc %>

@@ -1,5 +1,5 @@
 <% @cover.each do |f| %>
-	<%= link_to galeria: f.nazwa, :controller => :photos, :action => :showgallery do %><div id="<%= f.id %>"  class="back" style="background-image:url(<%= f.cover.url(:medium) %>);width:33%; height:50%;float: left;border:2px solid black;">
+	<%= link_to galeria: f.nazwa, id: 0, :controller => :photos, :action => :showgallery do %><div id="<%= f.id %>"  class="back" style="background-image:url(<%= f.cover.url(:medium) %>);width:33%; height:50%;float: left;border:2px solid black;">
 		<div id="b<%= f.id %>" class="shadow"><p class="title"><%= f.nazwa %></div>
 	</div>
 	<% end %>

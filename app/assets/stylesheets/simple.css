@@ -217,9 +217,8 @@ padding-top:3px;
   font-size: 1.5rem; }
 
   .logo i {
-
-    margin-right: 0.5rem; }
-}
+    margin-right: 0.5rem; 
+	}
 #1 a:hover {
 background: url(images/hover.png) no-repeat center center;
 }
