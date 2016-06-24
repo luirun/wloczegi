@@ -62,4 +62,5 @@ gem 'quiet_assets', '~> 1.1'
 gem 'rails_layout', '~> 1.0', '>= 1.0.29'
 gem 'sprockets', '~> 3.6'
 gem 'tilt'
+gem 'rhc', '~> 1.9.6'
 end
