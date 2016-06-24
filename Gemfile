@@ -60,6 +60,6 @@ group :development do
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'quiet_assets', '~> 1.1'
 gem 'rails_layout', '~> 1.0', '>= 1.0.29'
-gem 'turbo-sprockets-rails3'
+gem 'sprockets', '~> 3.6'
 gem 'tilt'
 end
