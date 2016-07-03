@@ -53,14 +53,12 @@ gem 'high_voltage', '~> 2.4'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'zurb-foundation', '~> 4.3', '>= 4.3.2'
 gem 'localtunnel', '~> 1.0', '>= 1.0.3'
-gem 'paperclip', '~> 3.4'
+gem 'paperclip'
 gem 'bcrypt'
 
 group :development do
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'quiet_assets', '~> 1.1'
 gem 'rails_layout', '~> 1.0', '>= 1.0.29'
-gem 'sprockets', '~> 3.6'
-gem 'tilt'
-gem 'rhc', '~> 1.9.6'
+gem 'coffee-script-source', '1.8.0'
 end

@@ -46,12 +46,12 @@
 
           <ul class="right">
 
-            <li><a href="#">Kadra</a></li>
+            <li><%= link_to "Kadra", {controller: "scouts", action: "show"} %></li>
 			
 			<li class="has-dropdown">
               <a href="#">Zastępy</a>
               <ul class="dropdown">
-                <li><%= link_to "Są gorsi!", {controller: "units", action: "index", nazwa: "Są Gorsi!"} %></a></li>
+                <li><%= link_to "Są gorsi!", {controller: "units", action: "index", nazwa: "Są Gorsi!"} %></li>
 				<li><a href="#">Nie wiem jakie tam jeszcze masz</a></li>
               </ul>
 

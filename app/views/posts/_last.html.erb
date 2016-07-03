@@ -1,6 +1,40 @@
-<% @post.reverse.each do |f| %>
-<h3><%= link_to f.tytul, {controller: "posts", action: "show",s: f.tytul} %></h3>
+ <% @post.reverse.each do |f| %>
 <% user = User.find(f.id_autora) %>
-<h5><%= user.imie %>  <%= user.nazwisko %>- <%= f.data_dodania %></h5>
-<%= f.opis %>
-<% end %>
+
+    <div class="row">
+
+      <div class="medium-6 large-4 columns">
+
+		<article class="article-card">
+
+          <img src="http://i.onionstatic.com/avclub/5199/85/16x9/960.jpg">
+
+          <div class="card-content">
+
+            <img class="post-icon" src="http://zurb.com/stickers/images/intro-foundation.png" alt="foundation icon">
+
+            <p class="post-author">Dodano przez: <%= user.imie %> <%= user.nazwisko %></p>
+
+            <h4><%= f.tytul %></h4>
+
+            <p><%= f.opis %></p>
+
+            <p>
+
+              <%= link_to "Czytaj więcej...", {controller: "posts", action: "show",s: f.tytul} %>
+
+              <a href="#" class="right"><i class="fi-share"></i></a>
+
+              <a href="#" class="right"><i class="fi-heart"></i></a>
+
+            </p>
+
+          </div>
+
+        </article>
+		
+      </div>
+<% end %>	
+	
+	
+	<!-- Fotki musza byc 16:9, kategorie musza miec wlasne ikonki. Kazdy post ma swoja ikonke.  Posty musza miec dodatkowe skrocone opisy. Skrocone opisy moga robic jako meta opis.--!>

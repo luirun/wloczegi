@@ -9,11 +9,17 @@
 		<%= label_tag :tytul %>
 		<%= f.text_field :tytul %>
 		
-		<%= label_tag(:opis, "Opis:") %>
-		<%= f.text_field :opis %>
+		<%= label_tag(:opis, "Skrocony opis:") %>
+		<%= f.text_field :short_description %>
+		
+		<%= label_tag(:opis, "Pełen opis:") %>
+		<%= f.text_field :full_description %>
 		
 		<%= label_tag :kategoria, "Kategoria" %>
 		<%= f.collection_select(:kategoria, @kategoria, :id, :nazwa) %>
+		
+		<%= label_tag :cover_photo, "Okładka:" %>
+		<%= f.file_field :cover_photo %>
 		
 
 		

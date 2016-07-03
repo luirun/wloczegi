@@ -20,6 +20,11 @@ class ScoutsController < ApplicationController
 			flash[:notice] = "Nie udalo się dodać zastępu o nazwie #{@newunit.Nazwa}"
 		end
 	end
+	
+	def show
+		@scouts = Scout.all
+		@zastep = Unit.all
+	end
 
 end
 

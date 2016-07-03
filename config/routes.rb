@@ -31,6 +31,7 @@ get 'zdjecie/nowe' => 'photos#newingallery'
 get 'zdjecie/nowe/dodaj' => 'photos#createingallery'
 get 'kontakt' => 'contacts#index'
 post 'kontakt/wyslij' => 'contacts#create'
+get 'kadra' => 'scouts#show'
 
 
 resources :visitors do

@@ -29,10 +29,10 @@ class PhotosController < ApplicationController
 		@photos = Photo.new(photos_params)
 		if @photos.valid?
 			@photos.save
-			flash[:notice] = "Pomyślnie dodano nowe zdjęcie do tej galerii!"
+			flash[:notice] = "Pomyślnie dodano nowe zdjęcie do galerii #{params[:nazwa]}!"
 			redirect_to session.delete(:return_to)
 		else
-			render 'new'
+			redirect_to session.delete(:return_to)
 		end
 	end
 	
