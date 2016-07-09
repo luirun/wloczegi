@@ -13,6 +13,12 @@ class User < ActiveRecord::Base
 		}, on: :create
 	validates_presence_of :imie, :nazwisko, :password, on: :create
 	
+	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" },	
+	:path => ":rails_root/public/system/:attachment/:id/:style/:filename",    
+	:url => "/system/:attachment/:id/:style/:filename"
+	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+	
+	
 	def combined_value
 		"#{self.imie} #{self.nazwisko}"
 	end

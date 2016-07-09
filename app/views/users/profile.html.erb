@@ -1,8 +1,11 @@
-<div class="avatar" style="background-color:gray;width:150px;height:150px;margin:auto; float:left;">Miejsce na avatar</div>
+<div class="avatar" style="width:200px;height:200px;margin:auto; float:left; margin:10px;">
+	<%= image_tag @user.avatar.url(:medium), style: "width:100%;height:100%;" %>
+</div>
 <h2><%= @user.imie %> <%= @user.nazwisko %></h2>
 <h3><%= @user.login %></h3></br>
-<h4>O mnie:<textarea>Tutaj bedzie miejsce na opis</textarea></h4>
+<h4>O mnie:<%= simple_format @user.description %>
 <% if @user.id_zastepu != nil %>
 <h4>Mój zastęp:<%= @user.id_zastepu %></h4>
 <% end %>
 <%= link_to "Napisz nowy post!", {controller: "posts", action: "new"} %>
+<%= link_to "Edytuj profil", {controller: "users", action: "edit", user: params[:login]} %>

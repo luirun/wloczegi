@@ -38,7 +38,7 @@
 
             <li><%= link_to "Kalendarz", calendars_index_path(rok: Time.now.year(), miesiac: Time.now.month()) %></li>
 
-            <li><a href="#">Dołącz do nas!</a></li>
+            <li><%= link_to "Dołącz do nas!", {controller: "visitors", action: "invite"} %></li>
 
           </ul>
 
@@ -69,4 +69,4 @@
 
 
 
-    </div><!-- /navigation -->
+    </div>

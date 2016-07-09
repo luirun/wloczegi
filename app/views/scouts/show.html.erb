@@ -7,7 +7,7 @@
 	<% @scouts.each do |f| %>
 		<tr>
 			<td><%= f.imie %> <%= f.nazwisko %></td>
-			<td><%= @zastep.select(:nazwa).where(:id => f.zastep).first.nazwa %></td>
+			<td><% zastep = Unit.select(:Nazwa).where(:id => f.zastep).first %><%= zastep.Nazwa %></td>
 			<td>Zdjecie</td>
 		</tr>
 	<% end %>	

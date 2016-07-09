@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614123007) do
+ActiveRecord::Schema.define(version: 20160708113009) do
 
   create_table "calendars", force: :cascade do |t|
     t.string  "tytul",      limit: 50,   null: false
@@ -25,8 +25,47 @@ ActiveRecord::Schema.define(version: 20160614123007) do
   add_index "calendars", ["idharcerza"], name: "idx_calendars_id_harcerza", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string "nazwa", limit: 100,  null: false
-    t.string "opis",  limit: 1000, null: false
+    t.string   "nazwa",             limit: 100,  null: false
+    t.string   "opis",              limit: 1000, null: false
+    t.string   "icon_file_name",    limit: 255
+    t.string   "icon_content_type", limit: 255
+    t.integer  "icon_file_size",    limit: 4
+    t.datetime "icon_updated_at"
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "zawartosc",  limit: 65535
+    t.text     "login",      limit: 65535
+    t.integer  "id_postu",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string  "imie",           limit: 255,  null: false
+    t.string  "nazwisko",       limit: 255,  null: false
+    t.string  "email",          limit: 255,  null: false
+    t.string  "tytul",          limit: 255,  null: false
+    t.string  "opis",           limit: 1000, null: false
+    t.integer "id_uzytkownika", limit: 4
+    t.date    "date"
+    t.string  "zakonczono",     limit: 3
   end
 
   create_table "galleries", force: :cascade do |t|
@@ -41,7 +80,6 @@ ActiveRecord::Schema.define(version: 20160614123007) do
   add_index "galleries", ["id_autora"], name: "gallery_user_idx", using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.integer  "id_dodajacego",        limit: 4
     t.integer  "id_galerii",           limit: 4
     t.string   "zdjecie_file_name",    limit: 255
     t.string   "zdjecie_content_type", limit: 255
@@ -49,14 +87,18 @@ ActiveRecord::Schema.define(version: 20160614123007) do
     t.datetime "zdjecie_updated_at"
   end
 
-  add_index "photos", ["id_dodajacego"], name: "photos_users_idx", using: :btree
-
   create_table "posts", force: :cascade do |t|
-    t.string  "tytul",        limit: 100,  null: false
-    t.integer "id_autora",    limit: 4,    null: false
-    t.string  "opis",         limit: 5000, null: false
-    t.integer "kategoria",    limit: 4,    null: false
-    t.date    "data_dodania",              null: false
+    t.string   "tytul",                   limit: 100,  null: false
+    t.integer  "id_autora",               limit: 4,    null: false
+    t.string   "short_description",       limit: 250,  null: false
+    t.integer  "kategoria",               limit: 4,    null: false
+    t.date     "data_dodania",                         null: false
+    t.string   "long_description",        limit: 5000, null: false
+    t.string   "coverphoto_content_type", limit: 255
+    t.string   "coverphoto_file_name",    limit: 255
+    t.integer  "coverphoto_file_size",    limit: 4
+    t.datetime "coverphoto_updated_add"
+    t.string   "status",                  limit: 15
   end
 
   add_index "posts", ["id_autora"], name: "post_user_idx", using: :btree
@@ -76,16 +118,22 @@ ActiveRecord::Schema.define(version: 20160614123007) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "imie",            limit: 30,  null: false
-    t.string  "nazwisko",        limit: 50,  null: false
-    t.string  "login",           limit: 255, null: false
-    t.string  "email",           limit: 255, null: false
-    t.string  "password_digest", limit: 255, null: false
-    t.integer "id_zastepu",      limit: 4
+    t.string   "imie",                limit: 30,   null: false
+    t.string   "nazwisko",            limit: 50,   null: false
+    t.string   "login",               limit: 255,  null: false
+    t.string   "email",               limit: 255,  null: false
+    t.string   "password_digest",     limit: 255,  null: false
+    t.integer  "id_zastepu",          limit: 4
+    t.string   "isadmin",             limit: 3
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+    t.string   "uprawnienia",         limit: 13
+    t.string   "description",         limit: 1000
   end
 
   add_foreign_key "calendars", "scouts", column: "idharcerza", name: "id_harcerze"
   add_foreign_key "galleries", "users", column: "id_autora", name: "gallery_user"
-  add_foreign_key "photos", "users", column: "id_dodajacego", name: "photos_users"
   add_foreign_key "posts", "users", column: "id_autora", name: "post_user"
 end

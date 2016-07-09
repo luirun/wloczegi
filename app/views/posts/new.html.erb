@@ -9,17 +9,18 @@
 		<%= label_tag :tytul %>
 		<%= f.text_field :tytul %>
 		
-		<%= label_tag(:opis, "Skrocony opis:") %>
+		<%= label_tag(:short_description, "Skrocony opis:") %>
 		<%= f.text_field :short_description %>
 		
-		<%= label_tag(:opis, "Pełen opis:") %>
-		<%= f.text_field :full_description %>
+		<%= label_tag(:long_description, "Pełen opis:") %>
+		<%= f.cktext_area :long_description, :class => 'najlepsza', :ckeditor => {:language => 'pl'} %>
 		
 		<%= label_tag :kategoria, "Kategoria" %>
 		<%= f.collection_select(:kategoria, @kategoria, :id, :nazwa) %>
+		<%= link_to "Dodaj nową kategorię!", {controller: "posts", action: "newcategory"}, class: "button", target: "_blank" %>
 		
-		<%= label_tag :cover_photo, "Okładka:" %>
-		<%= f.file_field :cover_photo %>
+		<%= label_tag :coverphoto, "Okładka:" %>
+		<%= f.file_field :coverphoto %>
 		
 
 		

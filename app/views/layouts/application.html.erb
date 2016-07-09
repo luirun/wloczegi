@@ -28,13 +28,14 @@
     <div class="title-bar" data-responsive-toggle="nav-menu" data-hide-for="medium">
       <%= render 'layouts/navigation' %>
     </div>
+<div id="wrap">
     <main role="main">
       <%= render 'layouts/messages' %>
-      <%= yield %>
+		<%= yield %>
     </main>
-
+</div>
     
     <%= javascript_include_tag "application" %>
-	<%= render 'layouts/footer' %>
+	 <%= render 'layouts/footer' %>
   </body>
 </html>

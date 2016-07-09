@@ -6,15 +6,15 @@ class PhotosController < ApplicationController
 	
 	def showgallery
 		@photos = Photo.where(:id_galerii => Gallery.select(:id).where(:nazwa => params[:galeria]).first)
-		dlugosc = @photos.length
+		@dlugosc = @photos.length
 		@next = params[:id].to_i + 1
-			if (@next == dlugosc)
+			if (@next == @dlugosc)
 				@next = 0
 			end
 			
 		@back = params[:id].to_i - 1
 			if (@back == -1)
-				@back = dlugosc-1
+				@back = @dlugosc-1
 			end
 	end
 	

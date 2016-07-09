@@ -1,4 +1,7 @@
-<% if @zdjec != nil %>
+<% if @dlugosc == 0 %>
+	KUpa nie ma tu nic
+	<%= link_to "Dodaj nowe zdjęcie!", {controller: "photos", action: "newingallery", galeria: params[:galeria]} %>
+<% else %>
 <h2><%= params[:galeria] %></h2>
 <div id="photo" style="width: 100%; height: 100%;">
 <%= image_tag @photos[params[:id].to_i].zdjecie.url, style: "float: left; width: 99%; height: 95%;" %>
@@ -18,7 +21,4 @@
 
 
 <%= @dlugosc %>
-<% else %>
-	KUpa nie ma tu nic
-	<%= link_to "Dodaj nowe zdjęcie!", {controller: "photos", action: "newingallery", galeria: params[:galeria]} %>
 <% end %>

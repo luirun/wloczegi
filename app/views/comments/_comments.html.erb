@@ -1,0 +1,13 @@
+<h1>Komentarze:</h1>
+<div id="comments-container">
+    <% @comments.each do |comment| %>
+	<div class="comment-container">
+		<div class="comment-author">
+			<%= image_tag (@user.avatar.url(:medium)), class: "comment-author-avatar" %>
+			<div class="comment-author-info"><%= comment.login %></div>
+	</div>
+		<div class="comment-content"><%= simple_format(comment.zawartosc) %></div>
+		<div class="comment-date"><%= comment.created_at %></div>
+	</div>
+    <% end %>
+</div>

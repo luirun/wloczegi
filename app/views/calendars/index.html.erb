@@ -31,7 +31,7 @@
 			<% if $i == f.event_date.day %>
 				<% $q = f.event_date.day %>
 				<td style="background-color:#34495e" class="kazde"><%= $i %> - <%=  link_to f.tytul, {:controller => "calendars", :action => "describe", id: f.id}, id: $i, class: "trigger" %></td>
-				<div id="pop-up" class="<%= $i %>">Tytul: <%= f.tytul %></br>Data: <%= f.date.strftime("%Y-%d-%m") %></br>Godzina: <%= f.godzina %></div>
+				<div id="pop-up" class="<%= $i %>">Tytul: <%= f.tytul %></br>Data: <%= f.event_date.strftime("%Y-%d-%m") %></br>Godzina: <%= f.godzina %></div>
 				<% if $a%7 == 0 %>
 					</tr>			
 				<% end %>

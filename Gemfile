@@ -61,4 +61,5 @@ gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'quiet_assets', '~> 1.1'
 gem 'rails_layout', '~> 1.0', '>= 1.0.29'
 gem 'coffee-script-source', '1.8.0'
+gem 'ckeditor'
 end
