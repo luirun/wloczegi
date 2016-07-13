@@ -1,8 +1,14 @@
+<% i = 3 %>
+<% a= 1 %>
+
 <% @post.reverse.each do |f| %>
 <% user = User.find(f.id_autora) %>
 <% category = Category.find(f.kategoria) %>
-    <div class="row">
 
+<% if i%3 == 0 %>
+<div class="row">
+<% a = 3 %>
+<% end %>
       <div class="medium-6 large-4 columns">
 
 		<article class="article-card">
@@ -14,7 +20,7 @@
 
             <%= image_tag(category.icon.url(:thumb), class: "post-icon", alt: category.nazwa) %>
 
-            <p class="post-author">Dodano przez: <%= user.imie %> <%= user.nazwisko %></p>
+            <p class="post-author">Dodano przez: <%= user.imie %> <%= user.nazwisko %><%= i %></p>
 
             <h4><%= f.tytul %></h4>
 
@@ -43,8 +49,14 @@
           </div>
 
         </article>
-		
-      </div>
+		</div>
+<% a = a - 1 %>
+
+<% if a==0 %>
+</div>
+<% end %>
+
+<% i = i + 1 %>
 <% end %>	
 	
 	

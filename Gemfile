@@ -55,6 +55,7 @@ gem 'zurb-foundation', '~> 4.3', '>= 4.3.2'
 gem 'localtunnel', '~> 1.0', '>= 1.0.3'
 gem 'paperclip'
 gem 'bcrypt'
+gem 'rails-i18n', '~> 4.0.0'
 
 group :development do
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
