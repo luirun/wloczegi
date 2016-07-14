@@ -11,13 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
-/public/assets
 /config/secrets.yml
 
 #ignoruj obrazki
-/.img
-/.png
-/.gif
-*.img
-*.png
-*.gif

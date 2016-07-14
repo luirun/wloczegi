@@ -9,7 +9,12 @@ class PostsController < ApplicationController
 		@post = Post.where(:tytul => params[:s]).first
 		@user = User.find(@post.id_autora)
 		@comment = Comment.new
+		if current_user != nil && current_user.uprawnienia = "administrator"
 		@comments = Comment.where(:id_postu => @post.id)
+		else
+		@comments = Comment.where(:id_postu => @post.id, :approved => "y")
+		end
+		prepare_meta_tags title: @post.tytul, description: @post.short_description
 	end
 	
 	def update
@@ -52,7 +57,9 @@ class PostsController < ApplicationController
 	end
 	
 	def showcategory
-		@posts = Post.where(:kategoria => Category.select(:id).where(:nazwa => params[:kategoria]))
+		@category = Category.where(:nazwa => params[:category]).first
+		@posts = Post.where(:kategoria => Category.select(:id).where(:nazwa => params[:category]))
+		prepare_meta_tags title: @category.nazwa, description: @category.opis
 	end
 	
 private

@@ -30,11 +30,21 @@ class CommentsController < ApplicationController
 	@comment.login = "#{current_user.imie} #{current_user.nazwisko}"
 	@comment.id_dodajacego = current_user.id
 	@comment.id_postu = id_postu.id
+	if current_user.uprawnienia != "administrator"
+	@comment.approved = "n"
+	else
+	@comment.approved = "y"
+	end
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+		if @comment.approved = "n"
+			format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created and awaiting acceptaion.' }
+			format.json { render :show, status: :created, location: @comment }
+		else
+			format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created and awaiting acceptaion.' }
+			format.json { render :show, status: :created, location: @comment }
+		end
       else
         format.html { redirect_to session.delete(:return_to) }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -64,6 +74,12 @@ class CommentsController < ApplicationController
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def approve
+	session[:return_to] ||= request.referer
+	Comment.update(params[:id], :approved => "y")
+	redirect_to session.delete(:return_to)
   end
 
   private

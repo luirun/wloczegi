@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 	end
 	
 	def create
-		user = User.where(email: secure_params[:email]).first
+		user = User.where(email: params[:session][:email]).first
 			if user && user.authenticate(secure_params[:password])
 				session[:id] = user.id
 				log_in user
@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 				redirect_to root_path
 			else
 				flash.now[:alert] = 'Invalid email/password combination'
-				render 'new'
+				redirect_to root_path
 			end
 	end
 	

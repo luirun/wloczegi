@@ -1,72 +1,122 @@
- <div class="contain-to-grid sticky">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
 
 
-      <nav class="top-bar" data-topbar>
+<nav class="menu">
 
-        <ul class="title-area">
+  <h1 class="name"><i><%= image_tag("/system/buttons/pika.png", style: "width:40px;height:40px;margin-top:-10px;") %></i>GO Pokemon 24</a></h1>
 
-          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  <ul class="inline-list">
 
-        </ul>
+    <li><%= link_to "Home", root_path %></li>
+
+    <li class="active"><%= link_to "How to play?", {controller: "posts", action: "showcategory", category: "Tutorials"} %></li>
+	
+	<li><%= link_to "Download", {controller: "visitors", action: "download"} %></li>
+
+    <li><%= link_to "All Items", {controller: "visitors", action: "items"} %></li>
+		  
+    <li><%= link_to "FAQ", {controller: "visitors", action: "faq"} %></li>
+	
+	<li><%= link_to "Technical FAQ", {controller: "visitors", action: "technicalfaq"} %></li>
+
+     <li><%= link_to "Contact", {controller: "contacts", action: "index"} %></li>
+
+  </ul>
+
+  <ul class="inline-list hide-for-small-only account-action">
+  
+  <%= render 'layouts/navigation_links' %>
+
+<% if @current_user == nil %>
+    <li><a href="#" data-reveal-id="myModal">Login</a></li>
+
+    <li class=""><a class="signup" href="#" data-reveal-id="myModal">Signup</a></li>
+<% end %>
+
+  </ul>
+
+  <a class="account hide-for-medium-up" href="#" data-reveal-id="myModal"><i class="fi-unlock"></i></a>
+
+</nav>
 
 
 
-        <section class="top-bar-section">
+<!-- modal content -->
 
 
 
-          <div class="logo-wrapper hide-for-small-only">
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="login or sign up" aria-hidden="true" role="dialog">
 
-            <div class="logo">
+  <div class="row">
 
-				<ul class="title-arena">
-					<li class="title"><%= link_to "ZHP SULĘCINEK", root_path, class: "home-url" %></li>
-				</ul>
+    <div class="large-6 columns auth-plain">
+
+      <div class="signup-panel left-solid">
+
+        <p class="welcome">Registered Users</p>
+
+          <div class="row collapse">
+
+            <div class="small-2  columns">
+
+              <span class="prefix"><i class="fi-torso-female"></i></span>
+
+            </div>
+
+            <div class="small-10  columns">
+			<%= simple_form_for(:session, url: sessions_create_path) do |form| %>
+			<%= form.error_notification %>
+			
+			<%= form.input :email, label: false, placeholder: "e-mail" %>
 
             </div>
 
           </div>
 
+          <div class="row collapse">
 
+            <div class="small-2 columns ">
 
-          <!-- Left Nav Section -->
-		  
-		  	<ul class="left">
+              <span class="prefix"><i class="fi-lock"></i></span>
 
-            <li><%= link_to "Galeria", {controller: "photos", action: "show"} %></li>
+            </div>
 
-            <li><%= link_to "Kalendarz", calendars_index_path(rok: Time.now.year(), miesiac: Time.now.month()) %></li>
+            <div class="small-10 columns ">
 
-            <li><%= link_to "Dołącz do nas!", {controller: "visitors", action: "invite"} %></li>
+              <%= form.password_field :password, placeholder: "password" %>
 
-          </ul>
+            </div>
 
-          <!-- Right Nav Section -->
+          </div>
 
-          <ul class="right">
+		<%= form.button :submit, 'Log In', class: 'button submit' %>
+		<% end %>
 
-            <li><%= link_to "Kadra", {controller: "scouts", action: "show"} %></li>
-			
-			<li class="has-dropdown">
-              <a href="#">Zastępy</a>
-              <ul class="dropdown">
-                <li><%= link_to "Są gorsi!", {controller: "units", action: "index", nazwa: "Są Gorsi!"} %></li>
-				<li><a href="#">Nie wiem jakie tam jeszcze masz</a></li>
-              </ul>
-
-            <li><%= link_to "Kontakt", {controller: "contacts", action: "index"} %></li>
-			
-						  					<li>	  
-<%= render 'layouts/navigation_links' %>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </nav>
-
-
+      </div>
 
     </div>
+
+
+
+    <div class="large-6 columns auth-plain">
+
+    	<div class="signup-panel newusers">
+
+    		<p class="welcome"> New User?</p>
+
+    		<p>By creating an account with us, you will be able to move through the checkout process faster, view and track your orders, and more.</p><br>
+
+    		<%= link_to "Sign Up", {controller: "users", action: "new"}, class: "button" %></br>
+
+    	</div>
+
+    </div>
+
+
+
+   </div>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+
+</div>

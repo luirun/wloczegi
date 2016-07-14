@@ -12,12 +12,15 @@
 		
 		<div class="comment-content show-for-landscape">
 			<%= simple_format(comment.zawartosc) %>
+			
+			<% if current_user != nil && current_user.uprawnienia == "administrator" %>
+				<% if comment.approved == "n" %>
+					<%= link_to "Zaakceptuj", {controller: "comments", action: "approve", id: comment.id}, style: "button" %>
+				<% end %>
+			<% end %>
 		</div>
 		
 	</div>
-	
-	
-	
 	
 	
 	
@@ -34,6 +37,8 @@
 		</div>
 		
 	</div>
+	
+
 	
     <% end %>
 </div>

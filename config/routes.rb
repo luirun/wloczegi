@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :comments
   mount Ckeditor::Engine => '/ckeditor'
 root to: 'visitors#new'
+get 'download' => 'visitors#download'
+get 'items' => 'visitors#items'
 get 'dolacz' => 'visitors#invite'
+get 'faq' => 'visitors#faq'
+get 'technical-faq' => 'visitors#technicalfaq'
 get 'admins/panel' => 'admins#panel'
 get 'admins/new' => 'admins#new'
 post 'admins/create' => 'admins#create'
@@ -31,7 +35,7 @@ post '/post/zedytowany' => 'posts#updated'
 get 'posts/last2' => 'posts#last2'
 get 'posts/kategoria' => 'posts#newcategory'
 post '/post/dodanokategorie' => 'posts#categoryadded'
-get 'posts/w' => 'posts#showcategory'
+get 'posts/in' => 'posts#showcategory'
 get 'galeria' => 'photos#show'
 get 'galeria/dodaj' => 'photos#new'
 get 'galeria/nowa' => 'photos#newgallery'
@@ -43,6 +47,7 @@ get 'zdjecie/nowe/dodaj' => 'photos#createingallery'
 get 'kontakt' => 'contacts#index'
 post 'kontakt/wyslij' => 'contacts#create'
 get 'kadra' => 'scouts#show'
+get 'approve' => 'comments#approve'
 
 
 resources :visitors do

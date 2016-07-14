@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	
 	def new
 		@users = User.new
+		prepare_meta_tags(title: "Register", description: "Sign up to our website here.")
 	end
 	
 	def create
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
 			if @users.valid?
 				@users.save
 				id = User.select(:id).where(:login => params[:user][:login]).first
-				@users = User.update(id.id, :uprawnienia => "uzytkownik")
+				@users = User.update(id.id, :uprawnienia => "uzytkownik", :isadmin => "n")
 				flash[:notice] = "Zarejestrowano użytkownika #{@users.login}"
 				redirect_to sessions_new_path
 			else

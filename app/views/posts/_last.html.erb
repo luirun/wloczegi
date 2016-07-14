@@ -20,7 +20,7 @@
 
             <%= image_tag(category.icon.url(:thumb), class: "post-icon", alt: category.nazwa) %>
 
-            <p class="post-author">Dodano przez: <%= user.imie %> <%= user.nazwisko %><%= i %></p>
+            <p class="post-author">Added by: <%= user.imie %> <%= user.nazwisko %></p>
 
             <h4><%= f.tytul %></h4>
 
@@ -28,7 +28,7 @@
 
             <p>
 
-              <%= link_to "Czytaj więcej...", {controller: "posts", action: "show",s: f.tytul} %>
+              <%= link_to "Read more...", {controller: "posts", action: "show",s: f.tytul} %>
 
 			<a href="#" class="right">
 				<i class="fi-share">
@@ -49,8 +49,9 @@
           </div>
 
         </article>
-		</div>
-<% a = a - 1 %>
+	</div>
+
+	<% a = a - 1 %>
 
 <% if a==0 %>
 </div>
